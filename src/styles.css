@@ -1,0 +1,29 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400;500;600&display=swap');
+html,body{
+    margin: 0px;
+    height: 100%;
+}
+.pageContainer{
+    height: 100%;
+}
+
+.header{
+    padding: 1rem;
+    background-color: #68C174;
+}
+
+.logo{
+    font-size: 1.5rem;
+    color: white;
+    margin: 0px;
+    font-family: "Playpen Sans";
+    font-weight: 600;
+}
+
+.sidebar{
+    height: 100%;
+    display: inline-block;
+    background-color: rgb(228, 228, 228);
+    
+}
