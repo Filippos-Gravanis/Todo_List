@@ -54,6 +54,11 @@ html,body{
     flex-grow: 1;
 }
 
+.content{
+    display:flex;
+    flex-grow: 1;
+    justify-content: center;
+}
 
 .navItem:hover{
     border: 1px solid #68C174;
@@ -62,4 +67,9 @@ html,body{
 .active{
     color: white;
     background-color: #68C174;
+}
+
+.flx-clm{
+    display: flex;
+    flex-direction: column;
 }

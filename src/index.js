@@ -45,7 +45,6 @@ class todoFinder {
 }
 
 
-let todos = new todos()
 
 
 function header () {
@@ -62,7 +61,6 @@ header()
 
 
 function Sidebar () {
-    let selectedItem = 'All'
     const sidebarContainer = document.createElement('div')
     sidebarContainer.classList.add('sidebar')
     console.log(sidebarContainer);
@@ -93,10 +91,43 @@ function createNavItem (text) {
 
 }
 
+function todosContainer (todosList){ 
+    const todosContainer =  document.createElement('div')
+    todosList.todoItems.forEach( todo =>{
+        todosContainer.appendChild(todoElement(todo))
+
+    }
+    
+    )
+    return todosContainer
+
+}
 
 function content (){
+    let todosList = new todos()
+    todosList.addTodo(new todo('123','123','123','123'))
+    todosList.addTodo(new todo('123','123','123','123'))
     let contentContainer = document.createElement('div')
+    contentContainer.classList.add('content')
+    let todoss = todosContainer(todosList)
+    contentContainer.appendChild(todoss)
     return contentContainer
+}
+
+
+
+
+function todoElement(todoinfo){
+    const todo = document.createElement('div')
+    todo.classList.add("flx-clm")
+    const title = document.createElement('h3')
+    const description = document.createElement('p')
+    title.textContent = todoinfo.title
+    description.textContent = todoinfo.description
+    todo.appendChild(title)
+    todo.appendChild(description)
+    return todo
+
 }
 
 function sidebarContentContainer(){
