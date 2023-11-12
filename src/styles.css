@@ -8,6 +8,7 @@ html,body{
 
 *{
     box-sizing: border-box;
+    font-family: "Roboto";
 }
 .pageContainer{
     height: 100%;
@@ -18,6 +19,28 @@ html,body{
 .header{
     padding: 1rem;
     background-color: #68C174;
+    display: flex;
+    align-items: center;
+}
+
+.addButtonContainer{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+.addTodoButton{
+    font-size: 1.2rem;
+    padding: .4rem;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px
+    
+}
+
+.addTodoButton:hover{
+    cursor: pointer;
+    background-color: rgb(247, 247, 247);
+    border-color: rgb(247, 247, 247);
 }
 
 .logo{
@@ -31,7 +54,7 @@ html,body{
 .sidebar{
     max-height: 100%;
     display: inline-block;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(245, 245, 245);
     padding: 1rem;
 }
 
@@ -41,10 +64,8 @@ html,body{
     font-size: 1.3rem;
     font-family: "Roboto";
     cursor: pointer;
-    font-weight: 400;
     background-color: white;
     padding: .5rem 1rem .5rem 1rem;
-    color: rgb(82, 82, 82);
     border-radius: 5px;
     border: 1px solid white;
     min-width: 250px;
@@ -58,10 +79,15 @@ html,body{
     display:flex;
     flex-grow: 1;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .navItem:hover{
     border: 1px solid #68C174;
+}
+
+.navItem:hover .active{
+    border: 1px solid rgb(206, 32, 32);
 }
 
 .active{
@@ -72,4 +98,97 @@ html,body{
 .flx-clm{
     display: flex;
     flex-direction: column;
+}
+
+.todoCard{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: .5rem;
+    background-color: rgb(236, 236, 236);
+    border-radius: 5px;
+}
+
+.projectsTag{
+    margin-left: .5rem;
+    font-size: 1.2rem;
+    flex-grow: 1;
+}
+
+#projectsHeaderBtn{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+#projectsHeaderBtn:hover{
+    background-color: rgb(247, 247, 247);
+    border-color: rgb(247, 247, 247);
+    cursor: pointer;
+}
+
+.todosContainer{
+    display: flex;
+    gap:1rem;
+    flex-direction: column;
+    margin-top: .5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 100%;
+}
+
+.title{
+    margin-bottom: .1rem;
+    margin-top: .2rem;
+}
+
+
+.divider {
+    border-top: 1px solid rgb(240, 240, 240);
+
+    width: 100%;
+}
+
+#projectsHeader {
+    margin-top: 2rem;
+    padding-right: .5rem;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+
+.formItem{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    margin: 1rem;
+    width: 80%;
+}
+
+dialog{
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.formItem label {
+    font-size: 1.2rem;
+}
+
+
+#addTodoForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formSelectItem{
+    width: 80%;
+}
+
+
+.formSubmitButton {
+    width: 80%;
 }
