@@ -192,3 +192,8 @@ dialog{
 .formSubmitButton {
     width: 80%;
 }
+
+#addProjectDialog{
+    display: flex;
+    justify-content: space-evenly;
+}

@@ -9,7 +9,16 @@ export function sidebar () {
     const projectsHeaderBtn = document.createElement('button')
     projectsHeaderBtn.textContent = "+ New"
     projectsHeaderBtn.id = 'projectsHeaderBtn'
-    projectsHeaderBtn.addEventListener('click',)
+    projectsHeaderBtn.addEventListener('click',()=>{
+        if (document.querySelector('#addProjectDialog')){
+            removeAddProjectDialog()
+        }
+        else{
+        sidebarContainer.appendChild(addProjetDialog()
+        
+        )
+        }
+    })
     projectsTag.classList.add('projectsTag')
     projectsHeader.appendChild(projectsTag)
     projectsHeader.appendChild(projectsHeaderBtn)
@@ -17,6 +26,7 @@ export function sidebar () {
     sidebarContainer.appendChild(createNavItem("Today"))
     sidebarContainer.appendChild(createNavItem("This Week"))
     sidebarContainer.appendChild(projectsHeader)
+    
     return sidebarContainer
 }
 
@@ -38,4 +48,24 @@ function createNavItem (text) {
 
 
 
+}
+
+function addProjetDialog () {
+    const dialogContainer  = document.createElement('div')
+    dialogContainer.id = "addProjectDialog"
+    const newProjectInput = document.createElement('input')
+    const addButton = document.createElement('button')
+    addButton.textContent = "Add"
+    dialogContainer.appendChild(newProjectInput)
+    dialogContainer.appendChild(addButton)
+    return dialogContainer
+
+}
+
+function removeAddProjectDialog(){
+    const dialogContainer  = document.querySelector('#addProjectDialog')
+    while (dialogContainer.lastChild){
+        dialogContainer.removeChild(dialogContainer.lastChild)
+    }
+    dialogContainer.remove()
 }
