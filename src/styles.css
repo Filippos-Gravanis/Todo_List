@@ -59,7 +59,7 @@ html,body{
 }
 
 
-.navItem{
+.navItem,.projectItem{
     margin: .5rem;
     font-size: 1.3rem;
     font-family: "Roboto";
@@ -82,11 +82,11 @@ html,body{
     margin-top: 1rem;
 }
 
-.navItem:hover{
+.navItem:hover,.projectItem:hover{
     border: 1px solid #68C174;
 }
 
-.navItem:hover .active{
+.navItem:hover .active,.projectItem:hover .active{
     border: 1px solid rgb(206, 32, 32);
 }
 
@@ -195,5 +195,5 @@ dialog{
 
 #addProjectDialog{
     display: flex;
-    justify-content: space-evenly;
+    gap:1rem
 }

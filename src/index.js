@@ -12,6 +12,9 @@ class todoProjects {
     addProject(name) {
     this.projects.push(name)    
     }
+    getProjects(){
+        return this.projects
+    }
 }
 
 class todos {
@@ -91,11 +94,11 @@ function todoElement(todoinfo) {
 
 }
 
-function sidebarContentContainer(todosList) {
+function sidebarContentContainer(todosList,projects) {
     let mainContainer = document.querySelector(".pageContainer")
     let sidebarContentContainer = document.createElement('div')
     sidebarContentContainer.classList.add('sidebarContent')
-    const sidebarr = sidebar()
+    const sidebarr = sidebar(projects)
     const contentContainer = content(todosList)
     sidebarContentContainer.appendChild(sidebarr)
     sidebarContentContainer.appendChild(contentContainer)
@@ -106,7 +109,11 @@ function sidebarContentContainer(todosList) {
 function mainPageContainer () {
     let todosList = new todos()
     let projects = new todoProjects()
+    let active = {
+        "activeTab" : "All"
+    }
     projects.addProject("adventure")
+    projects.addProject("karma")
     header(todosList,projects)
     sidebarContentContainer(todosList,projects)
 }

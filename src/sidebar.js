@@ -1,4 +1,7 @@
-export function sidebar () {
+import { clearDiv } from "./clearDiv";
+
+export function sidebar (projects){
+
     const sidebarContainer = document.createElement('div')
     sidebarContainer.classList.add('sidebar')
     console.log(sidebarContainer);
@@ -7,16 +10,15 @@ export function sidebar () {
     const projectsTag = document.createElement('p')
     projectsTag.textContent = "Projects"
     const projectsHeaderBtn = document.createElement('button')
-    projectsHeaderBtn.textContent = "+ New"
+    projectsHeaderBtn.textContent = "+"
     projectsHeaderBtn.id = 'projectsHeaderBtn'
     projectsHeaderBtn.addEventListener('click',()=>{
         if (document.querySelector('#addProjectDialog')){
             removeAddProjectDialog()
         }
         else{
-        sidebarContainer.appendChild(addProjetDialog()
-        
-        )
+        const projectsList = document.querySelector('#projectsList')
+        projectsList.prepend(addProjetDialog(projects))
         }
     })
     projectsTag.classList.add('projectsTag')
@@ -26,7 +28,7 @@ export function sidebar () {
     sidebarContainer.appendChild(createNavItem("Today"))
     sidebarContainer.appendChild(createNavItem("This Week"))
     sidebarContainer.appendChild(projectsHeader)
-    
+    sidebarContainer.appendChild(projectsList(projects))
     return sidebarContainer
 }
 
@@ -50,13 +52,23 @@ function createNavItem (text) {
 
 }
 
-function addProjetDialog () {
+function setActive(){
+    
+}
+
+function addProjetDialog (projects) {
     const dialogContainer  = document.createElement('div')
-    dialogContainer.id = "addProjectDialog"
-    const newProjectInput = document.createElement('input')
+    const newProjectNameInput = document.createElement('input')
     const addButton = document.createElement('button')
+    dialogContainer.id = "addProjectDialog"
     addButton.textContent = "Add"
-    dialogContainer.appendChild(newProjectInput)
+    addButton.addEventListener('click',()=>{
+        projects.addProject(newProjectNameInput.value)
+        clearDiv(document.querySelector('#addProjectDialog'))
+        clearDiv(document.querySelector("#projectsList"))
+        document.querySelector('.sidebar').appendChild(projectsList(projects))
+    })
+    dialogContainer.appendChild(newProjectNameInput)
     dialogContainer.appendChild(addButton)
     return dialogContainer
 
@@ -69,3 +81,19 @@ function removeAddProjectDialog(){
     }
     dialogContainer.remove()
 }
+
+
+function projectsList (projects){
+    const projectsList = document.createElement('div')
+    projectsList.id = "projectsList"
+    projects.getProjects().forEach((project)=>{
+        const projectItemContainer = document.createElement('div')
+        projectItemContainer.classList.add('projectItem')
+        projectItemContainer.classList.add('navItem')
+        projectItemContainer.textContent = project
+        projectsList.appendChild(projectItemContainer)
+    })
+    return projectsList
+
+}
+
