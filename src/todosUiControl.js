@@ -1,7 +1,9 @@
 function todoElementsContainer(todosList) {
     const todosContainer = document.createElement('div')
     todosContainer.classList.add('todosContainer')
+    console.log(todosList.todoItems);
     todosList.todoItems.forEach(todo => {
+        console.log(2);
         todosContainer.appendChild(todoElement(todo))
 
     }
@@ -11,20 +13,26 @@ function todoElementsContainer(todosList) {
 
 }
 
+function EmptyTodosUi(){
+    const  todosContainer = document.querySelector('.todosContainer')
+    while (todosContainer.lastChild){
+        todosContainer.removeChild(todosContainer.lastChild)
+    }
+    todosContainer.remove()
+}
+
 function filterTodos (todoList,active){
-    let filteredTodos = []
-    console.log(active);
+    let filteredTodos = {todoItems:[]}
     todoList.todoItems.forEach((todo)=>{
         if (active=="All"){
             filteredTodos = todoList
-            console.log(1);
             return
         }
         else if (active=="Today"){}
         else if (active=="This Week"){}
         else {
             if (todo.group==active){
-                filteredTodos.push(todo)
+                filteredTodos.todoItems.push(todo)
             }
         }
     })
@@ -47,4 +55,4 @@ function todoElement(todoinfo) {
 }
 
 
-export {todoElement,todoElementsContainer,filterTodos}
+export {todoElement,todoElementsContainer,filterTodos,EmptyTodosUi}

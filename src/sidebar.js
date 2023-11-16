@@ -1,9 +1,10 @@
 import { clearDiv } from "./clearDiv";
-import { filterTodos,todoElementsContainer } from "./todosUiControl.js"
+import { filterTodos,todoElementsContainer,EmptyTodosUi } from "./todosUiControl.js"
 export class sidebar {
-    constructor(projects, index) {
+    constructor(projects, index,todosList) {
         this.projects = projects
         this.index = index
+        this.todosList = todosList
     }
     initializeSidebar() {
         const sidebarContainer = document.createElement('div')
@@ -34,7 +35,7 @@ export class sidebar {
         sidebarContainer.appendChild(this.createNavItem("Today"))
         sidebarContainer.appendChild(this.createNavItem("This Week"))
         sidebarContainer.appendChild(projectsHeader)
-        sidebarContainer.appendChild(this.projectsList(this.projects))
+        sidebarContainer.appendChild(this.projectsList(this.projects,this.todosList))
         const navItems = document.querySelectorAll('navItem')
         console.log(navItems);
         return sidebarContainer
@@ -54,6 +55,9 @@ export class sidebar {
                 }
             });
             ev.target.classList.add('active')
+            this.index.activeTab = ev.target.innerText
+            EmptyTodosUi()
+            document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(this.todosList,this.index.activeTab)))
         })
         return navItem
 
@@ -90,10 +94,10 @@ export class sidebar {
     }
 
 
-    projectsList(projects) {
+    projectsList() {
         const projectsList = document.createElement('div')
         projectsList.id = "projectsList"
-        projects.getProjects().forEach((project) => {
+        this.projects.getProjects().forEach((project) => {
 
             projectsList.appendChild(this.addprojectItem(project))
         })
@@ -117,6 +121,9 @@ export class sidebar {
             });
             ev.target.classList.add('active')
             this.index.activeTab = ev.target.innerText
+            console.log(this.todosList.todoItems);
+            EmptyTodosUi()
+            document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(this.todosList,this.index.activeTab)))
             
 
             console.log(this.index);
