@@ -1,7 +1,7 @@
 import { addTododialog } from "./addTodoDialog";
 
 
-export function header(todosList,projectList) {
+export function header(todosList,projectList,active) {
     const mainContainer = document.querySelector('.pageContainer');
     const headerContainer = document.createElement('div');
     const headerLogo = document.createElement('p');
@@ -10,7 +10,7 @@ export function header(todosList,projectList) {
     addButtonContainer.classList.add('addButtonContainer')
     addTodoButton.textContent = "+ Add Todo"
     addTodoButton.classList.add('addTodoButton')
-    addTodoButton.addEventListener('click', () => addTododialog(todosList,projectList))
+    addTodoButton.addEventListener('click', () => addTododialog(todosList,projectList,active))
     headerContainer.classList.add('header');
     headerLogo.classList.add('logo')
     headerLogo.textContent = "TodoList";

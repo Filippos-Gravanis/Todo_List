@@ -9,7 +9,7 @@ export class sidebar {
     initializeSidebar() {
         const sidebarContainer = document.createElement('div')
         sidebarContainer.classList.add('sidebar')
-        console.log(sidebarContainer);
+        
         const projectsHeader = document.createElement('div')
         projectsHeader.id = 'projectsHeader'
         const projectsTag = document.createElement('p')
@@ -37,7 +37,7 @@ export class sidebar {
         sidebarContainer.appendChild(projectsHeader)
         sidebarContainer.appendChild(this.projectsList(this.projects,this.todosList))
         const navItems = document.querySelectorAll('navItem')
-        console.log(navItems);
+        
         return sidebarContainer
     }
 
@@ -48,13 +48,14 @@ export class sidebar {
         navItem.classList.add('navItem')
         navItem.addEventListener('click', (ev) => {
             let navItems = document.querySelectorAll(".navItem")
-            console.log(navItems);
+            
             navItems.forEach(Item => {
                 if (Item.classList.contains('active')) {
                     Item.classList.remove('active')
                 }
             });
             ev.target.classList.add('active')
+            
             this.index.activeTab = ev.target.innerText
             EmptyTodosUi()
             document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(this.todosList,this.index.activeTab)))
@@ -112,8 +113,8 @@ export class sidebar {
         projectItemContainer.textContent = project
         projectItemContainer.addEventListener('click', ev => {
             let navItems = document.querySelectorAll(".navItem")
-            console.log(navItems);
-            console.log(this.index)
+            
+            
             navItems.forEach(Item => {
                 if (Item.classList.contains('active')) {
                     Item.classList.remove('active')
@@ -121,12 +122,12 @@ export class sidebar {
             });
             ev.target.classList.add('active')
             this.index.activeTab = ev.target.innerText
-            console.log(this.todosList.todoItems);
+            
             EmptyTodosUi()
             document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(this.todosList,this.index.activeTab)))
             
 
-            console.log(this.index);
+            
         })
         return projectItemContainer
     }

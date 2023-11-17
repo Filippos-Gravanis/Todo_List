@@ -2,6 +2,7 @@ import "./styles.css"
 import { header } from "./header.js"
 import { sidebar } from "./sidebar.js"
 import { todo } from "./todo.js"
+import { todoFinder } from "./todoFinder.js"
 import { filterTodos,todoElementsContainer } from "./todosUiControl.js"
 class todoProjects {
 
@@ -29,28 +30,11 @@ class todos {
     deleteTodo(todo) {
         let todoToDelete = new todoFinder(todo, this.todoItems)
         this.todoItems.splice(todoToDelete.find(), 1)
-        console.log(this.todoItems)
+        
     }
 }
 
-class todoFinder {
-    constructor(todo, todos) {
-        this.todo = todo
-        this.todos = todos
-    }
 
-    find() {
-        let index = 0
-        this.todos.forEach(listTodo => {
-
-            if (listTodo.id == this.todo.id) {
-                index = this.todos.indexOf(listTodo)
-            }
-        })
-        return index
-    }
-
-}
 
 
 
@@ -90,7 +74,7 @@ function mainPageContainer () {
     }
     projects.addProject("adventure")
     projects.addProject("karma")
-    header(todosList,projects)
+    header(todosList,projects,active)
     sidebarContentContainer(todosList,projects,active)
 }
 

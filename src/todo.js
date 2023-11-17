@@ -6,6 +6,5 @@ export class todo {
         this.priority = priority
         this.group = group
         this.completed = false
-
     }
 }

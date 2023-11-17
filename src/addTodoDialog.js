@@ -1,24 +1,25 @@
 
 import { todo } from "./todo.js"
-export function addTododialog(todosList, projectList) {
+import { filterTodos,EmptyTodosUi,todoElementsContainer } from "./todosUiControl";
+export function addTododialog(todosList, projectList, active) {
     const mainContainer = document.querySelector('.pageContainer')
-    if (!document.querySelector('dialog')){
+    if (!document.querySelector('dialog')) {
 
-    const container = document.createElement('dialog')
-    container.id = "todoDialog"
-    container.appendChild(addTodoform(todosList, projectList))   
-    
-    mainContainer.appendChild(container)
-    container.showModal()
+        const container = document.createElement('dialog')
+        container.id = "todoDialog"
+        container.appendChild(addTodoform(todosList, projectList, active))
+
+        mainContainer.appendChild(container)
+        container.showModal()
     }
-    else{
-    document.querySelector('dialog').showModal()
+    else {
+        document.querySelector('dialog').showModal()
     }
-    
+
 }
 
 
-function addTodoform(todosList, projectList) {
+function addTodoform(todosList, projectList,active) {
     const addTodoForm = document.createElement('form')
     const header = document.createElement('h2')
     header.textContent = "New Todo"
@@ -30,10 +31,12 @@ function addTodoform(todosList, projectList) {
 
     addTodoForm.addEventListener('submit', (event) => {
         event.preventDefault()
-        console.log(todosList)
-        todosList.addTodo(new todo(document.querySelector("#text").value,document.querySelector("#date").value,
         
-        document.querySelector("#importance").value,document.querySelector("#projects").value))
+        todosList.addTodo(new todo(document.querySelector("#text").value, document.querySelector("#date").value,
+
+            document.querySelector("#importance").value, document.querySelector("#projects").value))
+        EmptyTodosUi()
+        document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(todosList, active.activeTab)))
         document.querySelector('dialog').close()
     })
     addTodoForm.appendChild(header)
@@ -46,7 +49,7 @@ function addTodoform(todosList, projectList) {
     const projectInputed = formSelectItem('projects', projectList)
     projectInputed.id = "projectInputed"
     addTodoForm.appendChild(projectInputed)
-    const importanceInputed =  formSelectItem('importance', ['low', 'medium', 'high'])
+    const importanceInputed = formSelectItem('importance', ['low', 'medium', 'high'])
     importanceInputed.id = "importanceInputed"
     addTodoForm.appendChild(importanceInputed)
     addTodoForm.appendChild(formSubmitButton)
@@ -97,7 +100,7 @@ function formSelectItem(label, options) {
     formSelectItem.required = true
     formSelectItem.classList.add("formSelect" + label)
 
-    console.log(options);
+    
     if (options.projects) {
         options.projects.forEach((project) => {
             const selectorOption = document.createElement('option')
