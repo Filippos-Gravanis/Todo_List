@@ -49,7 +49,7 @@ function addTodoform(todosList, projectList,active) {
     const projectInputed = formSelectItem('projects', projectList)
     projectInputed.id = "projectInputed"
     addTodoForm.appendChild(projectInputed)
-    const importanceInputed = formSelectItem('importance', ['low', 'medium', 'high'])
+    const importanceInputed = formSelectItem('importance', ['Low', 'Medium', 'High'])
     importanceInputed.id = "importanceInputed"
     addTodoForm.appendChild(importanceInputed)
     addTodoForm.appendChild(formSubmitButton)

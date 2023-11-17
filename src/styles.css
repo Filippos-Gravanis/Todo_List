@@ -141,6 +141,7 @@ html,body{
 .title{
     margin-bottom: .1rem;
     margin-top: .2rem;
+    user-select: none;
 }
 
 
@@ -206,8 +207,28 @@ dialog{
 }
 
 .dueDate{
-    margin-top: 5px;
-    margin-bottom:0px;
-    font-size: .8rem;
     color:rgb(87, 87, 87);
+    user-select: none;
+}
+
+.todoExtraInfo{
+    display: flex;
+    gap: .5rem;
+    padding-top: 5px;
+}
+
+.lowPriority{
+    color: #68C174
+}
+.mediumPriority{
+    color:rgb(184, 184, 0)
+}
+.highPriority{
+    color:rgb(255, 72, 72)
+}
+
+.todoExtraInfo > p {
+    margin: 0px;
+    font-size: .8rem;
+    user-select: none;
 }

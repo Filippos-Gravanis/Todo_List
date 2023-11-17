@@ -43,6 +43,13 @@ class todos {
 function content(todosList,active) {
     todosList.addTodo(new todo('123', '123', '123', '123'))
     todosList.addTodo(new todo('123', '123', '123', '123'))
+    todosList.addTodo(new todo('123', '123', 'Medium', '123'))
+    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
+    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
+    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
+    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
+    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
+    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
     let contentContainer = document.createElement('div')
     contentContainer.classList.add('content')
     let todoElements = todoElementsContainer(filterTodos(todosList,active.activeTab))
