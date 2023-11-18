@@ -36,7 +36,7 @@ function addTodoform(todosList, projectList,active) {
 
             document.querySelector("#importance").value, document.querySelector("#projects").value))
         EmptyTodosUi()
-        document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(todosList, active.activeTab)))
+        document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(todosList, active.activeTab),active))
         document.querySelector('dialog').close()
     })
     addTodoForm.appendChild(header)

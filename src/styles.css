@@ -61,7 +61,7 @@ html,body{
 
 .navItem,.projectItem{
     margin: .5rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-family: "Roboto";
     cursor: pointer;
     background-color: white;
@@ -196,13 +196,15 @@ dialog{
 
 #addProjectDialog{
     display: flex;
-    gap:1rem
+    gap:1rem;
+    margin:.5rem
 }
 
 .todoInfoColumn{
     display: flex;
     flex-direction: column;
     justify-content:end;
+    flex-grow: 1;
     margin-left: .8rem;
 }
 
@@ -231,4 +233,10 @@ dialog{
     margin: 0px;
     font-size: .8rem;
     user-select: none;
+}
+
+
+.removeButton{
+    user-select: none;
+    cursor: pointer;
 }

@@ -1,11 +1,11 @@
 import { todoFinder } from "./todoFinder";
-function todoElementsContainer(todosList) {
+function todoElementsContainer(todosList,active) {
     const todosContainer = document.createElement('div')
     todosContainer.classList.add('todosContainer')
     
     todosList.todoItems.forEach(todo => {
         
-        todosContainer.appendChild(todoElement(todo,todosList))
+        todosContainer.appendChild(todoElement(todo,todosList,active))
 
     }
 
@@ -41,7 +41,7 @@ function filterTodos (todoList,active){
 }
 
 
-function todoElement(todoinfo,todosList) {
+function todoElement(todoinfo,todosList,active) {
 
     const todo = document.createElement('div')
     todo.classList.add("todoCard")
@@ -59,6 +59,15 @@ function todoElement(todoinfo,todosList) {
     const priority = document.createElement('p')
     priority.textContent = todoinfo.priority + " priority"
     priority.classList.add(importanceStyling(todoinfo.priority))
+
+    const removeButton = document.createElement('div')
+    removeButton.textContent="x"
+    removeButton.classList.add('removeButton')
+    removeButton.addEventListener('click',(ev)=>{
+        todosList.deleteTodo(todoinfo)
+        EmptyTodosUi()
+        document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(todosList, active.activeTab),active.activeTab))
+    })
 
     const completed = document.createElement('input')
     completed.type = "checkbox"
@@ -81,6 +90,7 @@ function todoElement(todoinfo,todosList) {
 
     todo.appendChild(completed)
     todo.appendChild(todoInfoColumn)
+    todo.appendChild(removeButton)
     
     return todo
 

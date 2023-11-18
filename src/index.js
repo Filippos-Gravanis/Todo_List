@@ -4,6 +4,7 @@ import { sidebar } from "./sidebar.js"
 import { todo } from "./todo.js"
 import { todoFinder } from "./todoFinder.js"
 import { filterTodos,todoElementsContainer } from "./todosUiControl.js"
+import { storedTodos } from "./storedTodos.js"
 class todoProjects {
 
     constructor (projects){
@@ -20,17 +21,18 @@ class todoProjects {
 
 class todos {
     constructor() {
-        this.todoItems = []
+        this.todoItems = storedTodos().getTodos()
     }
 
     addTodo(todo) {
         this.todoItems.push(todo)
+        storedTodos().setTodos(this.todoItems)
     }
 
     deleteTodo(todo) {
         let todoToDelete = new todoFinder(todo, this.todoItems)
         this.todoItems.splice(todoToDelete.find(), 1)
-        
+        storedTodos().setTodos(this.todoItems)
     }
 }
 
@@ -41,18 +43,9 @@ class todos {
 
 
 function content(todosList,active) {
-    todosList.addTodo(new todo('123', '123', '123', '123'))
-    todosList.addTodo(new todo('123', '123', '123', '123'))
-    todosList.addTodo(new todo('123', '123', 'Medium', '123'))
-    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
-    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
-    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
-    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
-    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
-    todosList.addTodo(new todo('Do The Dishes', '20-12-2023', 'Low', '123'))
     let contentContainer = document.createElement('div')
     contentContainer.classList.add('content')
-    let todoElements = todoElementsContainer(filterTodos(todosList,active.activeTab))
+    let todoElements = todoElementsContainer(filterTodos(todosList,active.activeTab),active)
     contentContainer.appendChild(todoElements)
     return contentContainer
 }

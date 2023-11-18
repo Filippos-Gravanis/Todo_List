@@ -19,7 +19,7 @@ export class sidebar {
         addProjectButton.id = 'projectsHeaderBtn'
         addProjectButton.addEventListener('click', () => {
             if (document.querySelector('#addProjectDialog')) {
-                removeAddProjectDialog()
+                this.removeAddProjectDialog()
             }
             else {
                 const projectsList = document.querySelector('#projectsList')
@@ -58,7 +58,7 @@ export class sidebar {
             
             this.index.activeTab = ev.target.innerText
             EmptyTodosUi()
-            document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(this.todosList,this.index.activeTab)))
+            document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(this.todosList,this.index.activeTab)),this.index)
         })
         return navItem
 
@@ -124,7 +124,7 @@ export class sidebar {
             this.index.activeTab = ev.target.innerText
             
             EmptyTodosUi()
-            document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(this.todosList,this.index.activeTab)))
+            document.querySelector('.content').appendChild(todoElementsContainer(filterTodos(this.todosList,this.index.activeTab),this.index))
             
 
             
